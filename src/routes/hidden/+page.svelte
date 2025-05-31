@@ -211,16 +211,16 @@
             if (hasMatch(value)) return true;
           }
         }
-      return false;
-    };
+        return false;
+      };
 
     if (hasMatch(obj)) {
       const parentFirst = obj.first ?? null;
       array.splice(i, 1); 
       return parentFirst < 10 ? '0' + parentFirst : String(parentFirst);
     }
-  }
-  return null; 
+    }
+    return null; 
   };
 
   const setCellValue = (cellValue, rowIndex, colIndex, tableID) => {
@@ -230,7 +230,7 @@
         if (vectors100.length === 7 && searchType != 4) {
           const result = findAndRemoveByRowCol(expectedValues, rowIndex, colIndex);
           return result;
-        } else if (vectors100.length === 100 || searchType == 4) {
+        } else if (vectors100.length === 100 || searchType == 4 || searchType == 5) {
           let temp = vectors100[tableID][6];
           const result = findAndRemoveByRowCol(temp, rowIndex, colIndex);
           return result; 
@@ -344,6 +344,7 @@
 					break; // Break after first match
 				}
 			}
+
 		} else if ([3, 6, 9, 12, 15, 18, 21].includes(colIndex)) {
 			// Side columns
 			style = `font-size: 12px; writing-mode: vertical-lr; text-orientation: upright; width: 1px; height: 40px;`;
@@ -433,6 +434,7 @@
 					break; // Break after first match
 				}
 			}
+
 		} else if ([5, 8, 11, 14, 17, 20, 23].includes(colIndex)) {
 			// Side columns
 			style = `font-size: 12px; writing-mode: vertical-lr; text-orientation: upright; width: 1px; height: 40px;`;
@@ -524,60 +526,6 @@
 			}
 		}
 
-    // if (vectors100.length === 13 && searchType != 4 && tableID != undefined)  {
-    //   let tempWeek = vectorN3[0].length === 18 ? 6 : vectorN3[0].length === 21 ? 7 : vectorN3[0].length === 24 ? 8 : 0;
-    //   let key = expectedValues[0].first
-    //       if (key < 10) {
-    //         key = "0" + key;
-    //       }
-    //       let { first: rowPos, second: colPos } = expectedValues[0].second;
-    //       let direction = expectedValues[0].third;
-    //       if ((rowPos - tempWeek) === (rowIndex - tempWeek) && (colPos - (tableID % 3 == 0 ? 2 : 1)) === (colIndex - (tableID % 3 == 0 ? 2 : 1))) {
-    //       console.log(rowPos - tempWeek);
-    //       console.log(colPos - (tableID % 3 == 0 ? 2 : 1));
-    //     }
-
-    // }else if (vectors100.length === 100 || searchType == 4 && tableID != undefined) {
-
-    //   let tempWeek = vectorN3[0].length === 18 ? 6 : vectorN3[0].length === 21 ? 7 : vectorN3[0].length === 24 ? 8 : 0;
-    //   let temp = vectors100[tableID][6];
-    //   let key = temp[0].first
-    //     if (key < 10) {
-    //       key = "0" + key;
-    //     }
-    //     let { first: rowPos, second: colPos } = temp[0].second;
-    //     let direction = temp[0].third;
-    //     if ((rowPos - tempWeek) === (rowIndex - tempWeek) && (colPos - (tableID % 3 == 0 ? 2 : 1)) === (colIndex - (tableID % 3 == 0 ? 2 : 1))) {
-    //       if (direction == "DR") {
-    //        style +="#FFC300";
-    //       }
-    //       if (direction == "D") {
-    //        style +="#FFC300";
-    //       }
-    //       if (direction == "DL") {
-    //        style +="#FFC300";
-    //       }
-    //       if (direction == "R") {
-    //        style +="#FFC300";
-    //       }
-    //       if (direction == "E") {
-    //        style +="#FFC300";
-    //       }
-    //       if (direction == "L") {
-    //        style +="#FFC300";
-    //       }
-    //       if (direction == "UR") {
-    //        style +="#FFC300";
-    //       }
-    //       if (direction == "U") {
-    //        style +="#FFC300";
-    //       }
-    //       if (direction == "UL") {
-    //        style +="#FFC300";
-    //       }
-    //     }
-    // }
-
 		return style;
 	};
 
@@ -643,7 +591,7 @@
         }
       }
     } 
-    else if (vectors100.length === 100 || searchType == 4){
+    else if (vectors100.length === 100 || searchType == 4 || searchType == 5){
         let temp = vectors100[index][6];
         for (const p of temp) {
         let key = p.first
@@ -716,6 +664,7 @@
           <option value="2">Skip Search</option>
           <option value="3">Date Search</option>
           <option value="4">MT or EQ</option>
+          <option value="5">MT_skip</option>
         </select>
       </div>
       <div>
@@ -969,7 +918,7 @@
       </table>
     </section>
     
-  {:else if vectors100.length === 100 || searchType == 4}
+  {:else if vectors100.length === 100 || searchType == 4 || searchType == 5}
     <section id="Grids">
       {#each vectors100 as element, index}
         <!-- Table for element[2] (formerly vectorN3) -->
