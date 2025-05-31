@@ -727,11 +727,13 @@
 						<input type="checkbox" id="exampleRadio0" name="example" value="0" bind:group={fixedDate} />
 					</div>
         {/if}
+        {#if searchType == 4 || searchType == 5}
         {#if searchType == 4}
         <label for="numberOfUWeeks" style="margin-bottom: 10px;">Select Number of Skips</label>
         <input type="number" bind:value={turn} min="0" max="5" step="1"/>
+        {/if}
         <label for="numberOfUWeeks" style="margin-bottom: 10px;">Select Number of Matches</label>
-        <input type="number" bind:value={matches} min="1" max="99" step="1"/>
+        <input type="number" bind:value={matches} min="2" max="10" step="1"/>
         {/if}
       </section>
       <div>
