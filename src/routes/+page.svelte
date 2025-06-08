@@ -34,7 +34,9 @@
 		CPPositions1 = [],
 		CPPositions2 = [],
 		CPPositions3 = [],
-		MP1,MP2,MP3;
+		MP1 = [],
+    MP2 = [],
+    MP3 = [];
       
   const weeks = ["Dates", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
   
@@ -66,7 +68,6 @@
 				] = vectors100;
 			}
 
-    
     } catch (error) {
       console.error("Error fetching vectors:", error);
     } 
@@ -227,7 +228,7 @@
       if (cellValue == 404) {
         return "✪"; 
       } else if (cellValue == 303) {
-        if (vectors100.length === 7 && searchType != 4) {
+        if (vectors100.length === 13) {
           const result = findAndRemoveByRowCol(expectedValues, rowIndex, colIndex);
           return result;
         } else if (vectors100.length === 100 || searchType == 4 || searchType == 5) {
@@ -269,7 +270,6 @@
 				}
 			}
 
-			// Apply color based on the matched key
 			for (let key = 0; key < 21; ++key) {
 				if (foundKey[key]) {
 					switch (key) {
@@ -346,7 +346,7 @@
 			}
 
 		} else if ([3, 6, 9, 12, 15, 18, 21].includes(colIndex)) {
-			// Side columns
+			// Left Side columns
 			style = `font-size: 12px; writing-mode: vertical-lr; text-orientation: upright; width: 1px; height: 40px;`;
 			let foundKey = new Array(21).fill(false);
 			for (const p of OpanelPositions) {
@@ -359,7 +359,6 @@
 				}
 			}
 
-			// Apply color based on the matched key
 			for (let key = 0; key < 21; ++key) {
 				if (foundKey[key]) {
 					switch (key) {
@@ -436,7 +435,7 @@
 			}
 
 		} else if ([5, 8, 11, 14, 17, 20, 23].includes(colIndex)) {
-			// Side columns
+			// Right Side columns
 			style = `font-size: 12px; writing-mode: vertical-lr; text-orientation: upright; width: 1px; height: 40px;`;
 			let foundKey = new Array(21).fill(false);
 			for (const p of CpanelPositions) {
@@ -449,7 +448,6 @@
 				}
 			}
 
-			// Apply color based on the matched key
 			for (let key = 0; key < 21; ++key) {
 				if (foundKey[key]) {
 					switch (key) {
