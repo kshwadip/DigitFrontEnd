@@ -249,7 +249,7 @@
     return weeks[colIndex];
   };
 
-  const setColumnStyle = (rowIndex,colIndex,matchedPositions,OpanelPositions,CpanelPositions,tableID) => {
+  const setColumnStyle = (cellValue,rowIndex,colIndex,matchedPositions,OpanelPositions,CpanelPositions,tableID) => {
 		let style = '';
 
 		if (colIndex === 0 || colIndex === 1 || colIndex === 2) {
@@ -344,6 +344,19 @@
 					break; // Break after first match
 				}
 			}
+
+      if (vectors100.length === 13 && searchType != 4) {
+        if (vectorN3[rowIndex][colIndex] == vectorN2[rowIndex][colIndex] && cellValue == 303) {
+          style += 'color: #0000FF;'; // E blue
+        } 
+      }
+      else if (vectors100.length === 100 || searchType == 4 || searchType == 5){
+        let vec3 = vectors100[tableID][2];
+        let vec2 = vectors100[tableID][1];
+        if (vec3[rowIndex][colIndex] == vec2[rowIndex][colIndex] && cellValue == 303) {
+          style += 'color: #0000FF;'; // E blue
+        }
+      }
 
 		} else if ([3, 6, 9, 12, 15, 18, 21].includes(colIndex)) {
 			// Left Side columns
@@ -845,10 +858,11 @@
     </form>
   </div>
   </div>
- 
+
   {#if vectors100.length === 13 && searchType != 4}
-    <!-- Table for Vector N3 -->
     <section id="Grids">
+
+      <!-- Table for Vector N3 -->
       <table on:mousemove={handleMouseMove}>
         <thead>
           <tr>
@@ -862,7 +876,7 @@
             <tr>
               {#each row as value, colIndex}
               <!-- svelte-ignore a11y_mouse_events_have_key_events -->
-                <td on:mouseover={() => handleMouseOver(value,rowIndex,colIndex,0)} on:mouseout={handleMouseOut} style={setColumnStyle(rowIndex, colIndex, MP3, OPPositions3, CPPositions3,0)}>
+                <td on:mouseover={() => handleMouseOver(value,rowIndex,colIndex,0)} on:mouseout={handleMouseOut} style={setColumnStyle(value,rowIndex, colIndex, MP3, OPPositions3, CPPositions3,"two")}>
                   {setCellValue(value, rowIndex, colIndex,0)}
                 </td>
               {/each}
@@ -885,7 +899,7 @@
             <tr>
               {#each row as value, colIndex}
               <!-- svelte-ignore a11y_mouse_events_have_key_events -->
-                <td on:mouseover={() => handleMouseOver(value,rowIndex,colIndex,1)} on:mouseout={handleMouseOut} style={setColumnStyle(rowIndex, colIndex, MP2, OPPositions2, CPPositions2,1)}>
+                <td on:mouseover={() => handleMouseOver(value,rowIndex,colIndex,1)} on:mouseout={handleMouseOut} style={setColumnStyle(value,rowIndex, colIndex, MP2, OPPositions2, CPPositions2,"one")}>
                   {setCellValue(value, rowIndex, colIndex,0)}
                 </td>
               {/each}
@@ -908,7 +922,7 @@
             <tr>
               {#each row as value, colIndex}
               <!-- svelte-ignore a11y_mouse_events_have_key_events -->
-                 <td on:mouseover={() => handleMouseOver(value,rowIndex,colIndex,2)} on:mouseout={handleMouseOut} style={setColumnStyle(rowIndex, colIndex, MP1, OPPositions1, CPPositions1)}> 
+                 <td on:mouseover={() => handleMouseOver(value,rowIndex,colIndex,2)} on:mouseout={handleMouseOut} style={setColumnStyle(value,rowIndex, colIndex, MP1, OPPositions1, CPPositions1,"zero")}> 
                   {setCellValue(value, rowIndex, colIndex,0)}
                 </td>
               {/each}
@@ -916,6 +930,7 @@
           {/each}
         </tbody>
       </table>
+
     </section>
     
   {:else if vectors100.length === 100 || searchType == 4 || searchType == 5}
@@ -935,7 +950,7 @@
               <tr>
                 {#each row as value, colIndex}
                 <!-- svelte-ignore a11y_mouse_events_have_key_events -->
-                  <td on:mouseover={() => handleMouseOver(value,rowIndex,colIndex,index)} on:mouseout={handleMouseOut} style={setColumnStyle(rowIndex, colIndex, element[5], element[9], element[12],index)}>
+                  <td on:mouseover={() => handleMouseOver(value,rowIndex,colIndex,index)} on:mouseout={handleMouseOut} style={setColumnStyle(value, rowIndex, colIndex, element[5], element[9], element[12],index)}>
                     {setCellValue(value,rowIndex,colIndex,index)}
                   </td>
                 {/each}
@@ -958,7 +973,7 @@
               <tr>
                 {#each row as value, colIndex}
                 <!-- svelte-ignore a11y_mouse_events_have_key_events -->
-                  <td on:mouseover={() => handleMouseOver(value,rowIndex,colIndex,index)} on:mouseout={handleMouseOut} style={setColumnStyle(rowIndex, colIndex, element[4], element[8], element[11],index)}>
+                  <td on:mouseover={() => handleMouseOver(value,rowIndex,colIndex,index)} on:mouseout={handleMouseOut} style={setColumnStyle(value, rowIndex, colIndex, element[4], element[8], element[11],index)}>
                     {setCellValue(value,rowIndex,colIndex,index)}
                   </td>
                 {/each}
@@ -981,7 +996,7 @@
               <tr>
                 {#each row as value, colIndex}
                 <!-- svelte-ignore a11y_mouse_events_have_key_events -->
-                  <td on:mouseover={() => handleMouseOver(value,rowIndex,colIndex,index)} on:mouseout={handleMouseOut} style={setColumnStyle(rowIndex, colIndex, element[3], element[7], element[10])}>
+                  <td on:mouseover={() => handleMouseOver(value,rowIndex,colIndex,index)} on:mouseout={handleMouseOut} style={setColumnStyle(value, rowIndex, colIndex, element[3], element[7], element[10],index)}>
                     {setCellValue(value,rowIndex,colIndex,index)}
                   </td>
                 {/each}
