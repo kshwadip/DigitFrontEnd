@@ -1,7 +1,8 @@
 <script>
 
   let Fpanel, Spanel, Tpanel;
-  let searchType,
+  let selectedSite,
+      searchType,
       skipWhat = 0,
       numberOfUpWeeks = 5,
       numberOfDownWeeks = 5,
@@ -76,6 +77,7 @@
 
   const sendValues = async () => {
     const vectorData = {
+      selectedSite: parseInt(selectedSite, 10),
       searchType: parseInt(searchType, 10),
       numberOfUpWeeks: parseInt(numberOfUpWeeks, 10),
       numberOfDownWeeks: parseInt(numberOfDownWeeks, 10),
@@ -255,8 +257,13 @@
 		let style = '';
 
 		if (colIndex === 0 || colIndex === 1 || colIndex === 2) {
-			// Dates columns
-			style = `font-size: 20px; font-weight: bold; width: 1px; height: auto;`;
+      // Dates columns
+			style = `font-size: 20px; font-weight: bold; width: 1px; height: auto; 
+               background: linear-gradient(to right, #cc0000 10%, #0000cc 90%); 
+               -webkit-background-clip: text;
+               -webkit-text-fill-color: transparent;
+               background-clip: text;
+               color: transparent;`;
 		} else if ([4, 7, 10, 13, 16, 19, 22].includes(colIndex)) {
 			// Main columns
 			style = `font-size: 25px; font-weight: bold; width: 1px; height: auto;`;
@@ -408,41 +415,41 @@
 						///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 						case 9:
-							style += 'color: #000; background-color: #00ff80;';
+							style += 'color: #FFF; background-color: #00ff80;';
 							break; // light lime
 						case 10:
-							style += 'color: #000; background-color: #FF99FF;';
+							style += 'color: #FFF; background-color: #FF99FF;';
 							break; // pink
 						case 11:
-							style += 'color: #000; background-color: #00FF00;';
+							style += 'color: #FFF; background-color: #00FF00;';
 							break; // lime
 						case 12:
-							style += 'color: #000; background-color: #FF00FF;';
+							style += 'color: #FFF; background-color: #FF00FF;';
 							break; // magenta
 						case 13:
-							style += 'color: #000; background-color: #00FFFF;';
+							style += 'color: #FFF; background-color: #00FFFF;';
 							break; // cyan
 						case 14:
-							style += 'color: #000; background-color: #808000;';
+							style += 'color: #FFF; background-color: #808000;';
 							break; // olive
 						case 15:
-							style += 'color: #000; background-color: #748DC6;';
+							style += 'color: #FFF; background-color: #748DC6;';
 							break; // coral blue
 						case 16:
-							style += 'color: #000; background-color: #0000FF;';
+							style += 'color: #FFF; background-color: #0000FF;';
 							break; // blue
 						///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 						case 17:
-							style += 'color: #000; background-color: #00FFFF;';
+							style += 'color: #FFF; background-color: #00FFFF;';
 							break; // cyan
 						case 18:
-							style += 'color: #000; background-color: #808000;';
+							style += 'color: #FFF; background-color: #808000;';
 							break; // olive
 						case 19:
-							style += 'color: #000; background-color: #748DC6;';
+							style += 'color: #FFF; background-color: #748DC6;';
 							break; // coral blue
 						case 20:
-							style += 'color: #000; background-color: #0000FF;';
+							style += 'color: #FFF; background-color: #0000FF;';
 							break; // blue
 					}
 					break; // Break after first match
@@ -497,41 +504,41 @@
 						///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 						case 9:
-							style += 'color: #000; background-color: #FF0000;';
+							style += 'color: #FFF; background-color: #FF0000;';
 							break; // red
 						case 10:
-							style += 'color: #000; background-color: #FF99FF;';
+							style += 'color: #FFF; background-color: #FF99FF;';
 							break; // pink
 						case 11:
-							style += 'color: #000; background-color: #00FF00;';
+							style += 'color: #FFF; background-color: #00FF00;';
 							break; // lime
 						case 12:
-							style += 'color: #000; background-color: #FF00FF;';
+							style += 'color: #FFF; background-color: #FF00FF;';
 							break; // magenta
 						case 13:
-							style += 'color: #000; background-color: #00FFFF;';
+							style += 'color: #FFF; background-color: #00FFFF;';
 							break; // cyan
 						case 14:
-							style += 'color: #000; background-color: #808000;';
+							style += 'color: #FFF; background-color: #808000;';
 							break; // olive
 						case 15:
-							style += 'color: #000; background-color: #748DC6;';
+							style += 'color: #FFF; background-color: #748DC6;';
 							break; // coral blue
 						case 16:
-							style += 'color: #000; background-color: #0000FF;';
+							style += 'color: #FFF; background-color: #0000FF;';
 							break; // blue
 						///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 						case 17:
-							style += 'color: #000; background-color: #00FFFF;';
+							style += 'color: #FFF; background-color: #00FFFF;';
 							break; // cyan
 						case 18:
-							style += 'color: #000; background-color: #808000;';
+							style += 'color: #FFF; background-color: #808000;';
 							break; // olive
 						case 19:
-							style += 'color: #000; background-color: #748DC6;';
+							style += 'color: #FFF; background-color: #748DC6;';
 							break; // coral blue
 						case 20:
-							style += 'color: #000; background-color: #0000FF;';
+							style += 'color: #FFF; background-color: #0000FF;';
 							break; // blue
 					}
 					break; // Break after first match
@@ -669,6 +676,13 @@
 			<button on:click={sendPattern}>click</button>
 		</section>
     <form on:submit|preventDefault={sendValues}>
+      <div>
+          <label for="selectedSite">Select Site</label>
+          <select id="selectedSite" bind:value={selectedSite}>
+          <option value="0" selected>WebSite</option>
+          <option value="1">DumbSite</option>
+        </select>
+      </div>
       <div>
         <label for="searchType">Select Search type</label>
         <select id="searchType" bind:value={searchType}>
@@ -1063,10 +1077,6 @@
     margin-bottom: 2%;
   }
 
-  thead {
-    color: #ff0000;
-  }
-
   th,
   td {
     border: 1px solid rgb(255, 111, 0);
@@ -1075,6 +1085,9 @@
   }
 
   th {
+    background: linear-gradient(to right, #cc0000 10%, #0000cc 90%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
     background-color: #f2f2f2;
     font-weight: bold;
   }
