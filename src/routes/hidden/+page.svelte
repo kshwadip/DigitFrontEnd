@@ -13,7 +13,8 @@
       dateInput2 = "00/00/00",
       dateInput3 = "00/00/00",
       fixedDate,
-      turn = 0,
+      numberOfN2Skips = 0,
+      numberOfN3Skips = 0,
       matches = 3,
       errorMessage = "",
       showSkipSection = false;
@@ -87,7 +88,8 @@
       dateInput2: dateInput2,
       dateInput3: dateInput3,
 			fixedDate: parseInt(fixedDate, 10),
-      turn: parseInt(turn, 10),
+      numberOfN2Skips: parseInt(numberOfN2Skips, 10),
+      numberOfN3Skips: parseInt(numberOfN3Skips, 10),
       matches: parseInt(matches, 10),
     };
     try {
@@ -679,7 +681,7 @@
         </select>
       </div>
       <div>
-        <label for="numberOfUWeeks">Select Number of Up Weeks</label>
+        <label for="numberOfUWeeks">Number of Up Weeks</label>
         <input
         type="number"
         bind:value={numberOfUpWeeks}
@@ -689,7 +691,7 @@
       />
       </div>
       <div>
-        <label for="numberOfDWeeks">Select Number of Down Weeks</label>
+        <label for="numberOfDWeeks">Number of Down Weeks</label>
         <input
             type="number"
             bind:value={numberOfDownWeeks}
@@ -740,10 +742,12 @@
         {/if}
         {#if searchType == 4 || searchType == 5}
         {#if searchType == 4}
-        <label for="numberOfUWeeks" style="margin-bottom: 10px;">Select Number of Skips</label>
-        <input type="number" bind:value={turn} min="0" max="100" step="1"/>
+        <label for="numberOfUWeeks" style="margin-bottom: 10px;">Number of N3 Skips</label>
+        <input type="number" bind:value={numberOfN3Skips} min="0" max="100" step="1"/>
+        <label for="numberOfUWeeks" style="margin-bottom: 10px;">Number of N2 Skips</label>
+        <input type="number" bind:value={numberOfN2Skips} min="0" max="100" step="1"/>
         {/if}
-        <label for="numberOfUWeeks" style="margin-bottom: 10px;">Select Number of Matches</label>
+        <label for="numberOfUWeeks" style="margin-bottom: 10px;">Number of Matches</label>
         <input type="number" bind:value={matches} min="2" max="100" step="1"/>
         {/if}
       </section>
@@ -856,7 +860,6 @@
       {/if}
       <button type="submit">Search Values</button>
     </form>
-  </div>
   </div>
 
   {#if vectors100.length === 13 && searchType != 4}
