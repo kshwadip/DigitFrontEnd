@@ -8,6 +8,7 @@
       numberOfDownWeeks = 5,
       value1, // market
       value2 = [], // day
+      syncDays = false,
       value3 = 0 , //n1
       value4 = 0, //n2
       dateInput1 = "00/00/00",
@@ -248,6 +249,14 @@
         }
       }
   };
+
+  function syncDaysFunction(index, val) {
+    if (syncDays) {
+      value2 = [val, val, val];
+    } else {
+      value2[index] = val;
+    }
+  }
 
   const printdays = (colIndex) => {
     return weeks[colIndex];
@@ -780,9 +789,10 @@
         </select>
       </div>
       <div>
-        <label for="value2">N1</label>
-        <select id="value2" bind:value={value2[0]}>
-          <option value="0" selected>Monday</option>
+        <input type="checkbox" bind:checked={syncDays} id="sync" />
+        <label for="n1">N1</label>
+        <select id="n1" bind:value={value2[0]} on:change={(e) => syncDaysFunction(0, e.target.value)}>
+          <option value="0">Monday</option>
           <option value="1">Tuesday</option>
           <option value="2">Wednesday</option>
           <option value="3">Thursday</option>
@@ -790,10 +800,9 @@
           <option value="5">Saturday</option>
           <option value="6">Sunday</option>
         </select>
-
-        <label for="value2">N2</label>
-        <select id="value2" bind:value={value2[1]}>
-          <option value="0" selected>Monday</option>
+        <label for="n2">N2</label>
+        <select id="n2" bind:value={value2[1]} on:change={(e) => syncDaysFunction(1, e.target.value)}>
+          <option value="0">Monday</option>
           <option value="1">Tuesday</option>
           <option value="2">Wednesday</option>
           <option value="3">Thursday</option>
@@ -801,10 +810,9 @@
           <option value="5">Saturday</option>
           <option value="6">Sunday</option>
         </select>
-
-        <label for="value2">N3</label>
-        <select id="value2" bind:value={value2[2]}>
-          <option value="0" selected>Monday</option>
+        <label for="n3">N3</label>
+        <select id="n3" bind:value={value2[2]} on:change={(e) => syncDaysFunction(2, e.target.value)}>
+          <option value="0">Monday</option>
           <option value="1">Tuesday</option>
           <option value="2">Wednesday</option>
           <option value="3">Thursday</option>
