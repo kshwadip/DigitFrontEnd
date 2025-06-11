@@ -743,12 +743,12 @@
         {#if searchType == 4 || searchType == 5}
         {#if searchType == 4}
         <label for="numberOfUWeeks" style="margin-bottom: 10px;">Number of N3 Skips</label>
-        <input type="number" bind:value={numberOfN3Skips} min="0" max="100" step="1"/>
+        <input type="number" style="margin-bottom: 10px;" bind:value={numberOfN3Skips} min="0" max="100" step="1"/>
         <label for="numberOfUWeeks" style="margin-bottom: 10px;">Number of N2 Skips</label>
-        <input type="number" bind:value={numberOfN2Skips} min="0" max="100" step="1"/>
+        <input type="number" style="margin-bottom: 10px;" bind:value={numberOfN2Skips} min="0" max="100" step="1"/>
         {/if}
         <label for="numberOfUWeeks" style="margin-bottom: 10px;">Number of Matches</label>
-        <input type="number" bind:value={matches} min="2" max="100" step="1"/>
+        <input type="number" style="margin-bottom: 10px;" bind:value={matches} min="2" max="100" step="1"/>
         {/if}
       </section>
       <div>
@@ -1083,7 +1083,7 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: 20px;
+    gap: 5px;
   }
 
   form {
