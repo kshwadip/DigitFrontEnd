@@ -378,7 +378,7 @@
 
 		} else if ([3, 6, 9, 12, 15, 18, 21].includes(colIndex)) {
 			// Left Side columns
-			style = `font-size: 12px; writing-mode: vertical-lr; text-orientation: upright; width: 1px; height: 40px;`;
+			style = `font-size: 12px; font-weight: bold; writing-mode: vertical-lr; text-orientation: upright; width: 1px; height: 40px;`;
 			let foundKey = new Array(21).fill(false);
 			for (const p of OpanelPositions) {
 				const key = p.first;
@@ -467,7 +467,7 @@
 
 		} else if ([5, 8, 11, 14, 17, 20, 23].includes(colIndex)) {
 			// Right Side columns
-			style = `font-size: 12px; writing-mode: vertical-lr; text-orientation: upright; width: 1px; height: 40px;`;
+			style = `font-size: 12px; font-weight: bold; writing-mode: vertical-lr; text-orientation: upright; width: 1px; height: 40px;`;
 			let foundKey = new Array(21).fill(false);
 			for (const p of CpanelPositions) {
 				const key = p.first;
