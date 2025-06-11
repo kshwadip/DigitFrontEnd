@@ -259,7 +259,7 @@
 		if (colIndex === 0 || colIndex === 1 || colIndex === 2) {
       // Dates columns
 			style = `font-size: 20px; font-weight: bold; width: 1px; height: auto; 
-               background: linear-gradient(to right, #cc0000 10%, #0000cc 90%); 
+               background: linear-gradient(to right, #3333cc 25%, #ff00ff 75%); 
                -webkit-background-clip: text;
                -webkit-text-fill-color: transparent;
                background-clip: text;
@@ -1085,7 +1085,7 @@
   }
 
   th {
-    background: linear-gradient(to right, #cc0000 10%, #0000cc 90%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background: linear-gradient(to right, #3333cc 25%, #ff00ff 75%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
     background-clip: text;
     color: transparent;
     background-color: #f2f2f2;
