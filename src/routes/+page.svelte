@@ -322,41 +322,41 @@
 						///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 						case 9:
-							style += 'background-color: #00ff80;';
+							style += 'color: #FFF; background-color: #00ff80;';
 							break; // light lime
 						case 10:
-							style += 'background-color: #000080;';
+							style += 'color: #FFF; background-color: #000080;';
 							break; // navy blue
 						case 11:
-							style += 'background-color: #00FF00;';
+							style += 'color: #FFF; background-color: #00FF00;';
 							break; // lime
 						case 12:
-							style += 'background-color: #FF00FF;';
+							style += 'color: #FFF; background-color: #FF00FF;';
 							break; // magenta
 						case 13:
-							style += 'background-color: #00FFFF;';
+							style += 'color: #FFF; background-color: #00FFFF;';
 							break; // cyan
 						case 14:
-							style += 'background-color: #808000;';
+							style += 'color: #FFF; background-color: #808000;';
 							break; // olive
 						case 15:
-							style += 'background-color: #800000;';
+							style += 'color: #FFF; background-color: #800000;';
 							break; // maroon
 						case 16:
-							style += 'background-color: #0000FF;';
+							style += 'color: #FFF; background-color: #0000FF;';
 							break; // blue
 						///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 						case 17:
-							style += 'background-color: #00FFFF;';
+							style += 'color: #FFF; background-color: #00FFFF;';
 							break; // cyan
 						case 18:
-							style += 'background-color: #808000;';
+							style += 'color: #FFF; background-color: #808000;';
 							break; // olive
 						case 19:
-							style += 'background-color: #800000;';
+							style += 'color: #FFF; background-color: #800000;';
 							break; // maroon
 						case 20:
-							style += 'background-color: #0000FF;';
+							style += 'color: #FFF; background-color: #0000FF;';
 							break; // blue
 					}
 					break; // Break after first match
