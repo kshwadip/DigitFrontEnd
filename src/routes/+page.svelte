@@ -785,7 +785,8 @@
           <option value="5">Milan Night</option>
           <option value="6">Rajdhani Day</option>
           <option value="7">Rajdhani Night</option>
-          <option value="8">Padamawati</option>
+          <option value="8" selected>KalyanFull</option>
+          <option value="9" selected>Main BazarFull</option>
         </select>
       </div>
       <div>
